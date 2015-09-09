@@ -15,6 +15,7 @@ app.use(require('express-session')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./lib/mongo')(require('./config').getConnectionString()));
+app.use(require('./routes'));
 
 if ('development' == app.get('env')) {
   app.use(require('errorhandler')());
