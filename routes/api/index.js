@@ -20,7 +20,9 @@
       }
       else{
         req.session.token = generateToken();
-        req.session.token_created = Date.now();
+        if(!req.body.remember){
+          req.session.token_created = Date.now();
+        }
         req.session.username = result.username;
         res.json({
           success: true,
