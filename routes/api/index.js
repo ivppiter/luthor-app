@@ -100,13 +100,16 @@
       }
       else {
         console.log('created user');
-        if(err){
-          res.status(400);
-          res.json({success: false, message: 'Unable to register account'});
-        }
-        else {
-          res.json({ success: true });
-        }
+                var email = require('../../lib/email');
+        email.sendEmail(user.email, 'New Account', '<html><head></head><body>Welcome to the service. <p>To activate account click <a href="http://localhost:3000/#/activate?username=' + user.username + '&token='+ user.token.value + '">here</a' + '></p></body></html>', function(err){
+          if(err){
+            res.status(400);
+            res.json({success: false, message: 'Unable to register account'});
+          }
+          else {
+            res.json({ success: true });
+          }
+        })
       }
     })
   }
