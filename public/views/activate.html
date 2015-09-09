@@ -1,0 +1,11 @@
+<div ng-controller="ActivationController">
+    <form class="form">
+        <h2 class="form-signin-heading">Account Activation</h2>
+        <p>
+            <label for="activate-username" class="sr-only">Username</label>
+            <input id="activate-username" type="text" class="form-control" placeholder="Username" required autofocus ng-model="activate.username"/>
+            <input id="activate-token" type="hidden" required ng-model="activate.token"/>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="doActivation(activate)">Activate Account</button>
+    </form>
+</div>
